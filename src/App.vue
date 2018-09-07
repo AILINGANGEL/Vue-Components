@@ -1,22 +1,34 @@
 <template>
     <div id="app">
-        <Select v-model="value" :options="options" />
+        <Divider>
+            test
+        </Divider>
     </div>
 </template>
 <script>
-import Select from './components/Select.vue'
+import Divider from './components/Divider.vue';
+import Button from './components/Button.vue';
 export default {
     name: 'app',
     components: {
-        Select
+        Divider,
+        Button
     },
     data() {
         return {
             value: 'a',
             options: ['a', 'b']
         }
+    },
+    methods: {
+        click(msg) {
+            alert(msg);
+        }
     }
 }
 </script>
-<style>
+<style lang="scss">
+#app {
+    font-size: $font-size;
+}
 </style>

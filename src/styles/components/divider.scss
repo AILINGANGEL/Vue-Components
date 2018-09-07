@@ -1,0 +1,88 @@
+@import './custom';
+
+
+.v-divider {
+    background-color: $border-color;
+    line-height: 1;
+}
+
+.v-divider-horizontal {
+    height: 1px;
+    display: block;
+    width: 100%;
+    margin: 24px auto;
+}
+
+.v-divider-vertical {
+    width: 1px;
+    margin: 0 14px;
+    height: $font-size;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.v-divider-text {
+    font-weight: bold;
+}
+
+.v-divider-text-center {
+    text-align: center;
+}
+
+.v-divider-text-center,
+.v-divider-text-right,
+.v-divider-text-left {
+    display: table;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    text-align: center;
+    width: unset;
+}
+
+
+.v-divider-text-center::before,
+.v-divider-text-right::before,
+.v-divider-text-left::before,
+.v-divider-text-center::after,
+.v-divider-text-right::after,
+.v-divider-text-left::after {
+    content: '';
+    position: relative;
+    display: table-cell;
+    border-top: 1px solid $border-color;
+    top: 50%;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.v-divider-inner-text {
+    display: inline-block;
+    padding: 0 24px;
+}
+
+.v-divider-text-right::before {
+    width: 95%;
+}
+
+.v-divider-text-right::after {
+    width: 5%;
+    right: 0;
+}
+
+.v-divider-text-left::before {
+    width: 5%;
+}
+
+.v-divider-text-left::after {
+    width: 95%;
+    right: 0;
+}
+
+.v-divider-text-center.v-divider-dashed::before,
+.v-divider-text-center.v-divider-dashed::after,
+.v-divider-text-right.v-divider-dashed::before,
+.v-divider-text-right.v-divider-dashed::after,
+.v-divider-text-left.v-divider-dashed::before,
+.v-divider-text-left.v-divider-dashed::after {
+    border-top: 1px dashed $border-color;
+}

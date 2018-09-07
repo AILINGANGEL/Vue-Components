@@ -1,0 +1,51 @@
+@import '../custom';
+.v-select {
+    position: relative;
+    color: $font-color;
+}
+
+.v-select-input {
+    height: 32px;
+    width: 100%;
+    line-height: 1.5;
+    font-size: 12px;
+    border: 1px solid #dcdee2;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 5px;
+    color: #515a6e;
+}
+
+.v-select-input:focus {
+    outline: none !important;
+    border: 1px solid #2db7f5;
+    box-shadow: $box-shadow;
+}
+
+.v-select-dropdown {
+    position: absolute;
+    top: 42px;
+    left: 0;
+    z-index: 2;
+    overflow: auto;
+    max-height: 200px;
+    margin: 5px 0;
+    padding: 5px 0;
+    min-width: 100%;
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: $box-shadow;
+}
+
+.v-select-option {
+    padding: 2px 5px;
+}
+
+.v-select-option:hover {
+    background-color: #f8f8f9;
+    cursor: pointer;
+}
+
+.v-select-disabled {
+    background-color: rgba(197, 200, 206, .2);
+}
