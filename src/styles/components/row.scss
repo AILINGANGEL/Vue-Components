@@ -1,0 +1,55 @@
+@import './custom';
+
+.v-row-flex {
+    display: -webkit-flex;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@mixin gen-row-cls($prefix, $type) {
+    .v-row-#{$prefix}-#{$type} {
+        @if $prefix==justify {
+            @if $type==start {
+                justify-content: flex-start;
+            }
+            @else if $type==end {
+                justify-content: flex-end;
+            }
+            @else if $type==center {
+                justify-content: center;
+            }
+            @else if $type==space-between {
+                justify-content: space-between;
+            }
+            @else if $type==space-around {
+                justify-content: space-around;
+            }
+        }
+        @else if $prefix==align {
+            @if $type==top {
+                align-items: flex-start;
+            }
+            @else if $type==bottom {
+                align-items: flex-end;
+            }
+            @else if $type==middle {
+                align-items: center;
+            }
+        }
+    }
+}
+
+
+@each $atype in top,
+bottom,
+middle {
+    @include gen-row-cls('align', $atype);
+}
+
+@each $jtype in start,
+end,
+center,
+space-between,
+space-around {
+    @include gen-row-cls('justify', $jtype);
+}

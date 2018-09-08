@@ -1,0 +1,9 @@
+@mixin gen-col-cls($span) {
+    .v-col-#{$span} {
+        width: $span / 24 * 100%;
+    }
+}
+
+@for $i from 0 through 24 {
+    @include gen-col-cls($i);
+}

@@ -1,6 +1,6 @@
 <template>
     <div :class="selectCls">
-        <input :value="value" :disabled="disabled" @focus="showDropdown=true" @blur="showDropdown=false" @input="handleInput" :class="[selectInputCls,selectDisableCls]" />
+        <input :value="value" :disabled="disabled" @focus="showDropdown=true" @blur="showDropdown=false" @input="$emit('input', $event.target.value)" :class="[selectInputCls,selectDisableCls]" />
         <ul :class="selectDropdownCls" v-if="showDropdown">
             <li :class="selectOptionCls" v-for="option in filteredOptions" :key="option" @mousedown="selectOption(option)">{{option}}</li>
         </ul>
@@ -69,9 +69,6 @@ export default {
         selectOption(option) {
             this.$emit('input', option);
             this.showDropdown = false;
-        },
-        handleInput(e) {
-            this.$emit('input', e.target.value);
         }
     }
 }
