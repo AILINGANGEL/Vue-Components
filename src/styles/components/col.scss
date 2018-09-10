@@ -4,6 +4,13 @@
     }
 }
 
+@mixin gen-col-offset($span) {
+    .v-col-offset-#{$span} {
+        margin-left: $span / 24 * 100%;
+    }
+}
+
 @for $i from 0 through 24 {
     @include gen-col-cls($i);
+    @include gen-col-offset($i);
 }

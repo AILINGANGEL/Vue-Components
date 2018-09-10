@@ -15,7 +15,12 @@ export default {
             }
         },
         order: {
-
+            type: [String, Number],
+            default: 0
+        },
+        offset: {
+            type: [String, Number],
+            default: 0
         }
     },
     data() {
@@ -27,16 +32,18 @@ export default {
         cls() {
             return [
                 `${prefixCls}`,
-                `${prefixCls}-${this.span}`
+                `${prefixCls}-${this.span}`,
+                `${prefixCls}-offset-${this.offset}`
             ]
         },
         style() {
+            let style = {};
             if (this.gutter !== 0) {
-                return {
-                    paddingRight: this.gutter / 2 + 'px',
-                    paddingLeft: this.gutter / 2 + 'px'
-                }
+                style.paddingRight = this.gutter / 2 + 'px';
+                style.paddingLeft = this.gutter / 2 + 'px';
             }
+            style.order = this.order;
+            return style;
         }
     }
 }
