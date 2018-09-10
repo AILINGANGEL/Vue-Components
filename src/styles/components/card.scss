@@ -1,0 +1,35 @@
+@import '../custom';
+.v-card {
+    position: relative;
+    background: #fff;
+    border-radius: $border-radius;
+    transition: all .2s ease-in-out;
+}
+
+.v-card-bordered {
+    border: $border;
+}
+
+.v-card:hover {
+    box-shadow: $box-shadow;
+}
+
+.v-card-dishover:hover {
+    box-shadow: none;
+}
+
+.v-card-head {
+    padding-left: 16px;
+    border-bottom: $border;
+    font-weight: bold;
+}
+
+.v-card-extra {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+}
+
+.v-card-body {
+    padding: 16px;
+}

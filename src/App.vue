@@ -1,19 +1,22 @@
 <template>
     <div id="app">
-        <Row type="flex" justify="space-between" align="middle" class="code-row-bg" :gutter="16">
+        <!-- <Row type="flex" align="middle" class="code-row-bg" :gutter="16">
             <Col span="6">
-            <p style="height: 80px; background-color: blue">col-4</p>
+            <p style="height: 80px; background-color: blue">order-4</p>
             </Col>
-            <Col span="6">
+            <Col span="6" offset="6">
             <p style="height: 30px; background-color: blue">col-4</p>
             </Col>
-            <Col span="6">
-            <p style="height: 100px; background-color: blue">col-4</p>
-            </Col>
-            <Col span="6">
-            <p style="height: 60px; background-color: blue">col-4</p>
-            </Col>
-        </Row>
+        </Row> -->
+        <Card style="width: 320px; height: 320px" title="test">
+            <!--    <p slot="title">
+                Classic film
+            </p> -->
+            <a href="#" slot="extra" @click.prevent="changeLimit">
+                Change
+            </a>
+            <div>哈哈测试</div>
+        </Card>
     </div>
 </template>
 <script>
@@ -22,6 +25,7 @@ import Divider from './components/Divider.vue';
 import Button from './components/Button.vue';
 import Row from './components/Grid/Row.vue';
 import Col from './components/Grid/Col.vue';
+import Card from './components/Card.vue';
 export default {
     name: 'app',
     components: {
@@ -29,7 +33,8 @@ export default {
         Button,
         Select,
         Row,
-        Col
+        Col,
+        Card
     },
     data() {
         return {

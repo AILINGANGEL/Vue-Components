@@ -59,3 +59,22 @@ justify|flex布局下的水平排列方式,支持start, end, center, space-betwe
 属性|说明|类型|默认值
 ----|----|----|----|
 span| 栅格的占位格数, 支持0-24的整数|Number, String|-
+order| 栅格的位置顺序， flex布局模式下有效| Number, String| 0
+offset| 栅格左侧的间隔数,支持0-24的整数| Number, String| 0
+
+
+### Card
+#### props
+属性|说明|类型|默认值
+----|----|----|----|
+bordered| 是否显示边框|Boolean|true
+dis-hover| 禁用鼠标悬停显示阴影| Boolean| false
+title| 设置card的标题|String| -
+padding| 设置card内容区的padding, 单位px| Number| 16px
+
+
+#### slot
+属性|说明|
+----|----|
+title|自定义卡片标题|
+extra|额外展示的内容，默认位置为右上角|
