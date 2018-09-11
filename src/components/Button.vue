@@ -9,14 +9,10 @@ const prefixCls = 'v-btn';
 export default {
     name: 'v-button',
     props: {
-        disabled: {
-            type: Boolean,
-            default: false
-        },
         type: {
             type: String,
             validator: function(value) {
-                return oneOf(value, ['primary', 'success', 'warning', 'danger', 'default']);
+                return oneOf(value, ['primary', 'success', 'warning', 'default', 'error', 'dashed', 'text']);
             },
             default: 'default'
         },
@@ -27,6 +23,10 @@ export default {
         disabled: {
             type: Boolean,
             default: false
+        },
+        ghost: {
+            type: Boolean,
+            defalt: false
         }
     },
     data() {
@@ -41,7 +41,8 @@ export default {
                 [`${prefixCls}-${this.type}`],
                 {
                     [`${prefixCls}-long`]: this.long,
-                    [`${prefixCls}-disabled`]: this.disabled
+                    [`${prefixCls}-disabled`]: this.disabled,
+                    [`${prefixCls}-ghost`]: this.ghost
                 }
             ]
         }

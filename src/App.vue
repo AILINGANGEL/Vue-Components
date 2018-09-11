@@ -8,15 +8,7 @@
             <p style="height: 30px; background-color: blue">col-4</p>
             </Col>
         </Row> -->
-        <Card style="width: 320px; height: 320px" title="test">
-            <!--    <p slot="title">
-                Classic film
-            </p> -->
-            <a href="#" slot="extra" @click.prevent="changeLimit">
-                Change
-            </a>
-            <div>哈哈测试</div>
-        </Card>
+        <Button type="text" ghost>测试</Button>
     </div>
 </template>
 <script>
@@ -52,5 +44,6 @@ export default {
 <style lang="scss">
 #app {
     font-size: $font-size;
+    background-color: grey;
 }
 </style>

@@ -1,33 +1,114 @@
+@import '../custom';
+
+
+@mixin gen-btn-hover-cls($type) {
+    .v-btn-#{$type}:hover {
+        border-color: $primary-color;
+        color: $primary-color;
+    }
+}
+
+@mixin colored-btn() {
+    border-style: none;
+    color: #fff;
+}
+
+
+@mixin gen-btn-type-cls($type) {
+    .text {
+        color: #fff;
+    }
+    .v-btn-#{$type} {
+        @if $type==primary {
+            background-color: $primary-color;
+            @include colored-btn();
+        }
+        @else if $type==success {
+            @include colored-btn();
+            background-color: $success-color;
+        }
+        @else if $type==info {
+            background-color: $info-color;
+            @include colored-btn();
+        }
+        @else if $type==warning {
+            background-color: $warning-color;
+            @include colored-btn();
+        }
+        @else if $type==error {
+            background-color: $error-color;
+            @include colored-btn();
+        }
+        @else if $type==dashed {
+            border: 1px dashed $border-color;
+        }
+        @else if $type==text {
+            background-color: #fff;
+            border-style: none;
+        }
+        @else if $type==long {
+            widows: 100%;
+        }
+        @else if $type==disabled {
+            background-color: $disable-color;
+        }
+    }
+}
+
+@mixin gen-ghost-type-cls($type) {
+    .v-btn-ghost.v-btn-#{$type} {
+        @if $type==primary {}
+        @else if $type==success {
+            border: 1px solid $success-color;
+        }
+        @else if $type==info {
+            border: 1px solid $info-color;
+        }
+        @else if $type==warning {
+            border: 1px solid $warning-color;
+        }
+        @else if $type==error {
+            border: 1px solid $error-color;
+        }
+        @else if $type==dashed {
+            border: 1px dashed $border-color;
+        }
+    }
+}
+
+
+.v-btn:hover {
+    opacity: 0.5;
+}
+
 .v-btn {
     display: inline-block;
     text-align: center;
     cursor: pointer;
     padding: 5px 15px;
-    font-size: $font-size;
+    color: $font-color;
+    font-size: 12px;
     border-radius: $border-radius;
-    background-color: $default-color;
+    background-color: #fff;
+    transition: opacity 0.5s ease;
+    font-weight: lighter;
 }
 
-.v-btn-primary {
-    background-color: $primary-color;
+$btn-type: (primary, info, success, warning, default, error, dashed, text, disabled, long);
+@each $type in $btn-type {
+    @include gen-btn-type-cls($type);
+    @include gen-ghost-type-cls($type);
 }
 
-.v-btn-danger {
-    background-color: $error-color;
+
+@each $type in default,
+dashed,
+text {
+    @include gen-btn-hover-cls($type);
 }
 
-.v-btn-success {
-    background-color: $success-color;
-}
-
-.v-btn-warning {
-    background-color: $warning-color;
-}
-
-.v-btn-disabled {
-    background-color: $disable-color;
-}
-
-.v-btn-long {
-    width: 100%;
+.v-btn-ghost {
+    color: #fff;
+    background-color: #fff;
+    background: transparent;
 }

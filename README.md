@@ -27,9 +27,10 @@ npm run lint
 #### props
 属性|说明|类型|默认值
 ----|----|----|----|
-type|可以为'primary', 'success', 'warning', 'danger', 'default'中的一个,也可以不设置|String|default
+type|可以为'primary', 'success', 'warning', 'error', 'default', 'text', 'dash'中的一个,也可以不设置|String|default
 long|开启后按钮的长度为100%|Boolean|false
 disabled|设置按钮为禁用状态|Boolean|false
+ghost|设置背景为透明|Boolean|false
 
 #### event
 默认支持click事件
