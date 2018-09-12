@@ -1,84 +1,40 @@
 @import '../custom';
 
 
-@mixin gen-btn-hover-cls($type) {
-    .v-btn-#{$type}:hover {
-        border-color: $primary-color;
-        color: $primary-color;
-    }
-}
+$type-color: ( primary: $primary-color,
+success: $success-color,
+info: $info-color,
+warning: $warning-color,
+error: $error-color,
+);
 
-@mixin colored-btn() {
-    border-style: none;
+
+@mixin colored-btn($color) {
+    border-style: 1px solid $color;
     color: #fff;
+    background-color: $color;
 }
 
 
 @mixin gen-btn-type-cls($type) {
-    .text {
-        color: #fff;
-    }
     .v-btn-#{$type} {
-        @if $type==primary {
-            background-color: $primary-color;
-            @include colored-btn();
-        }
-        @else if $type==success {
-            @include colored-btn();
-            background-color: $success-color;
-        }
-        @else if $type==info {
-            background-color: $info-color;
-            @include colored-btn();
-        }
-        @else if $type==warning {
-            background-color: $warning-color;
-            @include colored-btn();
-        }
-        @else if $type==error {
-            background-color: $error-color;
-            @include colored-btn();
-        }
-        @else if $type==dashed {
+        @if $type==dashed {
             border: 1px dashed $border-color;
         }
         @else if $type==text {
             background-color: #fff;
             border-style: none;
         }
-        @else if $type==long {
-            widows: 100%;
-        }
-        @else if $type==disabled {
-            background-color: $disable-color;
+        @else {
+            @include colored-btn(map-get($type-color, $type));
         }
     }
-}
-
-@mixin gen-ghost-type-cls($type) {
-    .v-btn-ghost.v-btn-#{$type} {
-        @if $type==primary {}
-        @else if $type==success {
-            border: 1px solid $success-color;
-        }
-        @else if $type==info {
-            border: 1px solid $info-color;
-        }
-        @else if $type==warning {
-            border: 1px solid $warning-color;
-        }
-        @else if $type==error {
-            border: 1px solid $error-color;
-        }
-        @else if $type==dashed {
-            border: 1px dashed $border-color;
-        }
+    .v-btn-#{$type}[disabled] {
+        color: $disable-color;
+        background-color: #f7f7f7;
+        border-color: $border-color;
+        opacity: 1;
     }
-}
-
-
-.v-btn:hover {
-    opacity: 0.5;
 }
 
 .v-btn {
@@ -90,25 +46,43 @@
     font-size: 12px;
     border-radius: $border-radius;
     background-color: #fff;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s linear;
     font-weight: lighter;
 }
 
-$btn-type: (primary, info, success, warning, default, error, dashed, text, disabled, long);
+.v-btn:hover {
+    opacity: 0.5;
+}
+
+$btn-type: (primary, info, success, warning, error, dashed, text);
 @each $type in $btn-type {
     @include gen-btn-type-cls($type);
-    @include gen-ghost-type-cls($type);
 }
 
-
-@each $type in default,
-dashed,
+@each $type in dashed,
+default,
 text {
-    @include gen-btn-hover-cls($type);
+    .v-btn-#{$type}:hover {
+        color: $primary-color;
+        border-color: $primary-color;
+    }
 }
 
-.v-btn-ghost {
-    color: #fff;
-    background-color: #fff;
-    background: transparent;
+.v-btn-circle {
+    border-radius: 2em;
+}
+
+.v-btn-large {
+    font-size: 16px;
+    padding: 6px 15px;
+}
+
+.v-btn-small {
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 1px 7px 2px;
+}
+
+.v-btn-long {
+    width: 100%;
 }

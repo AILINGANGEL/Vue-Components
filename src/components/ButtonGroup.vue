@@ -1,29 +1,14 @@
 <template>
-    <button :class="cls" :disabled="disabled" @click="$emit('click')">
+    <div :class="cls">
         <slot></slot>
-    </button>
+    </div>
 </template>
 <script>
 import { oneOf } from '../utils/assist';
-const prefixCls = 'v-btn';
+const prefixCls = 'v-btn-group';
 export default {
-    name: 'v-button',
+    name: 'v-button-group',
     props: {
-        type: {
-            type: String,
-            validator: function(value) {
-                return oneOf(value, ['primary', 'success', 'info', 'warning', 'default', 'error', 'dashed', 'text']);
-            },
-            default: 'default'
-        },
-        long: {
-            type: Boolean,
-            default: false
-        },
-        disabled: {
-            type: Boolean,
-            default: false
-        },
         shape: {
             type: String,
             validator: function(value) {
@@ -35,6 +20,10 @@ export default {
             validator: function(value) {
                 return oneOf(value, ['large', 'small', 'default']);
             }
+        },
+        vertical: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
@@ -46,12 +35,10 @@ export default {
         cls() {
             return [
                 [`${prefixCls}`],
-                [`${prefixCls}-${this.type}`],
                 {
-                    [`${prefixCls}-long`]: this.long,
-                    [`${prefixCls}-disabled`]: this.disabled,
                     [`${prefixCls}-circle`]: this.shape === 'circle',
-                    [`${prefixCls}-${this.size}`]: !!this.size
+                    [`${prefixCls}-${this.size}`]: !!this.size,
+                    [`${prefixCls}-vertical`]: this.vertical
                 }
             ]
         }

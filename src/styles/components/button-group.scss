@@ -1,0 +1,65 @@
+.v-btn-group {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.v-btn-group:not(.v-btn-group-vertical)>.v-btn:first-child:not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.v-btn-group:not(.v-btn-group-vertical)>.v-btn:last-child:not(:first-child) {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.v-btn-group:not(.v-btn-group-vertical)>.v-btn:not(:last-child):not(:first-child) {
+    border-radius: 0;
+}
+
+
+.v-btn-group>.v-btn {
+    float: left;
+    border-style: none;
+}
+
+.v-btn-group-vertical>.v-btn {
+    display: block;
+    float: none;
+}
+
+.v-btn-group-vertical>.v-btn:first-child:not(:last-child) {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.v-btn-group-vertical>.v-btn:last-child:not(:first-child) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.v-btn-group-vertical>.v-btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+.v-btn-group-circle:not(.v-btn-group-vertical)>.v-btn:first-child {
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+}
+
+.v-btn-group-circle:not(.v-btn-group-vertical)>.v-btn:last-child {
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+}
+
+.v-btn-group-large>.v-btn {
+    font-size: 16px;
+    padding: 6px 15px;
+}
+
+.v-btn-group-small>.v-btn {
+    font-size: 12px;
+    border-radius: 3px;
+    padding: 1px 7px 2px;
+}

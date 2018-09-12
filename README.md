@@ -30,11 +30,20 @@ npm run lint
 type|可以为'primary', 'success', 'warning', 'error', 'default', 'text', 'dash'中的一个,也可以不设置|String|default
 long|开启后按钮的长度为100%|Boolean|false
 disabled|设置按钮为禁用状态|Boolean|false
-ghost|设置背景为透明|Boolean|false
+shape|可以设置为circle,让按钮变成原型|-
+size|可以设置为large, small| String| -
 
 #### event
 默认支持click事件
 
+
+### ButtonGroup
+#### props
+属性|说明|类型|默认值
+----|----|----|----|
+size|可以为'large', 'small'|String|-
+vertical|竖着排列按钮|Boolean|false
+shape|设置两头的按钮为原型，只在vertical为false的情况下生效|String| -
 
 
 ### Divider

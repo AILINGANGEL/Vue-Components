@@ -8,7 +8,11 @@
             <p style="height: 30px; background-color: blue">col-4</p>
             </Col>
         </Row> -->
-        <Button type="text" ghost>测试</Button>
+        <ButtonGroup shape="circle" size="small">
+            <Button type="error">测试</Button>
+            <Button type="warning">测试</Button>
+            <Button type="info">测试</Button>
+        </ButtonGroup>
     </div>
 </template>
 <script>
@@ -18,6 +22,7 @@ import Button from './components/Button.vue';
 import Row from './components/Grid/Row.vue';
 import Col from './components/Grid/Col.vue';
 import Card from './components/Card.vue';
+import ButtonGroup from './components/ButtonGroup';
 export default {
     name: 'app',
     components: {
@@ -26,7 +31,8 @@ export default {
         Select,
         Row,
         Col,
-        Card
+        Card,
+        ButtonGroup
     },
     data() {
         return {
@@ -43,7 +49,6 @@ export default {
 </script>
 <style lang="scss">
 #app {
-    font-size: $font-size;
-    background-color: grey;
+    font-size: $font-size; // background-color: grey;
 }
 </style>
