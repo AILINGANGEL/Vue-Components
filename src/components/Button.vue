@@ -45,8 +45,7 @@ export default {
     computed: {
         cls() {
             return [
-                [`${prefixCls}`],
-                [`${prefixCls}-${this.type}`],
+                `${prefixCls}`, `${prefixCls}-${this.type}`,
                 {
                     [`${prefixCls}-long`]: this.long,
                     [`${prefixCls}-disabled`]: this.disabled,

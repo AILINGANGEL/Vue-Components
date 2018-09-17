@@ -88,3 +88,22 @@ padding| 设置card内容区的padding, 单位px| Number| 16px
 ----|----|
 title|自定义卡片标题|
 extra|额外展示的内容，默认位置为右上角|
+
+### Collapse
+#### props
+属性|说明|类型|默认值
+----|----|----|----|
+value|当前激活面板的name 支持v-model双向绑定|Array or String |-
+
+
+### Panel Props
+属性|说明|类型|默认值
+----|----|----|----|
+name|当前面板的name, 与Collapse的value值对应|String |-
+
+
+### Panel Slot
+属性|说明
+----|----|
+无|面板头内容
+content|描述内容

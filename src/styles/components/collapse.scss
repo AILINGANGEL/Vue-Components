@@ -1,0 +1,67 @@
+@import '../custom';
+.v-collapse-item {
+    border: 1px solid $border-color;
+}
+
+.v-collapse-item:first-child {
+    border-radius: $border-radius $border-radius 0 0;
+}
+
+.v-collapse-item:last-child {
+    border-radius: 0 0 $border-radius $border-radius;
+}
+
+.v-collapse-item:not(:first-child) {
+    border-top: none;
+}
+
+.v-collapse-item-head {
+    height: 38px;
+    line-height: 38px;
+    padding-left: 16px;
+    background-color: $background-color;
+    cursor: pointer;
+    color: #666;
+    font-size: 12px;
+}
+
+.v-collapse-item-active {
+    border-bottom: 1px solid $border-color;
+}
+
+.v-collapse-item-content {
+    color: #515a6e;
+    padding: 16px;
+    background-color: #fff;
+    tansition: height 0.5s ease-in-out;
+}
+
+@keyframes slide-up-in {
+    0% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes slide-down-out {
+    0% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scaleY(0);
+    }
+}
+
+.slide-enter-active {
+    animation: slide-up-in 0.5s;
+}
+
+.slide-leave-active {
+    animation: slide-down-out 0.5s;
+}
