@@ -42,6 +42,7 @@ export default {
                 this.cValue.splice(index, 1);
             }
             this.$emit('input', this.cValue);
+            this.$emit('on-change', this.cValue);
         }
     }
 }
