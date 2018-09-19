@@ -94,6 +94,7 @@ extra|额外展示的内容，默认位置为右上角|
 属性|说明|类型|默认值
 ----|----|----|----|
 value|当前激活面板的name 支持v-model双向绑定|Array or String |-
+accordion|开启手风琴模式，每次只能撑开一个面板|Boolean|false
 
 #### events
 事件名|说明|返回值

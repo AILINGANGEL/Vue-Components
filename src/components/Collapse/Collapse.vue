@@ -8,7 +8,11 @@ const prefixCls = 'v-collapse'
 
 export default {
     props: {
-        value: [String, Array]
+        value: [String, Array],
+        accordion: {
+            type: Boolean,
+            default: false
+        }
     },
     data() {
         return {
@@ -27,22 +31,43 @@ export default {
     },
     methods: {
         setActivePanel() {
-            let activeNames = typeof this.value === 'string' ? [this.value] : this.value;
-            this.$children.forEach(child => {
-                if (activeNames.indexOf(child.$options.propsData.name) > -1) {
-                    child.show = true;
+            let activeNames;
+            if (this.accordion) {
+                if (Array.isArray(this.cValue)) {
+                    activeNames = this.cValue[0] || [];
+                } else {
+                    activeNames = [this.cValue];
                 }
+            } else {
+                activeNames = typeof this.cValue === 'string' ? [this.cValue] : this.cValue;
+            }
+
+            this.$children.forEach(child => {
+                child.show = activeNames.indexOf(child.$options.propsData.name) > -1;
             });
         },
         changeValue(name, show) {
             if (show) {
-                this.cValue.push(name);
+                if (this.accordion) {
+                    this.cValue = [name];
+                } else {
+                    this.cValue.push(name);
+                }
             } else {
-                let index = this.cValue.indexOf(name);
-                this.cValue.splice(index, 1);
+                if (this.accordion) {
+                    this.cValue = [];
+                } else {
+                    let index = this.cValue.indexOf(name);
+                    this.cValue.splice(index, 1);
+                }
             }
             this.$emit('input', this.cValue);
             this.$emit('on-change', this.cValue);
+        }
+    },
+    watch: {
+        cValue() {
+            this.setActivePanel();
         }
     }
 }
