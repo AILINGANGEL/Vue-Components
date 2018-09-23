@@ -113,3 +113,35 @@ name|当前面板的name, 与Collapse的value值对应|String |-
 ----|----|
 无|面板头内容
 content|描述内容
+
+
+### Input
+#### props
+属性|说明|类型|默认值
+----|----|----|----|
+type |输入框类型，可选值为 text、password、textarea、url、email、date |String|text
+value | 绑定的值，可使用 v-model 双向绑定| String or Number| -
+size | 输入框尺寸，可选值为large、small、default或者不设置|String| -
+placeholder | 占位文本| String| -
+disabled |设置输入框为禁用状态	|Boolean| false
+readonly |设置输入框为只读	|Boolean|false
+rows |文本域默认行数，仅在 textarea 类型下有效|Number|2
+autofocus |自动获取焦点|Boolean|false
+autocomplete |原生的自动完成功能，可选值为 off 和 on	|on or off | off
+
+
+### Input events
+事件名|说明|返回值
+----|----|----|
+on-change|数据改变时触发| event
+on-change|数据改变时触发|	event
+on-focus|输入框聚焦时触发| 无
+on-blur|输入框失去焦点时触发|无
+on-keyup|原生的 keyup 事件|event
+on-keydown|原生的 keydown 事件|event
+on-keypress|原生的 keypress 事件|event
+
+### Input methods
+事件名|说明|参数
+----|----|----|
+focus|手动聚焦输入框|无

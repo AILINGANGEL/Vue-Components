@@ -1,0 +1,94 @@
+@import '../custom';
+
+@mixin placeholder {
+     ::-webkit-input-placeholder {
+        @content
+    }
+     :-moz-placeholder {
+        @content
+    }
+     ::-moz-placeholder {
+        @content
+    }
+     :-ms-input-placeholder {
+        @content
+    }
+}
+
+// @each $prefix in ::-webkit-input,
+//  :-moz,
+//  ::-moz-,
+//  :-ms-input {
+//     @include placeholer($prefix);
+// }
+
+.v-input-wraper {
+    display: inline-block;
+    font-size: $font-size;
+}
+
+.v-input-wraper-large {
+    font-size: $large-font-size;
+}
+
+.v-input-wraper-large .v-input {
+    padding: 4px 7px;
+}
+
+.v-input-wraper-small .v-input {
+    padding: 1px 7px;
+}
+
+.v-input {
+    display: inline-block;
+    color: $font-color;
+    border: 1px solid $border-color;
+    height: 32px;
+    line-height: 1.5;
+    border-radius: $border-radius;
+    padding: 10px;
+    width: 100%;
+}
+
+textarea.v-input {
+    height: auto;
+}
+
+.v-input:hover {
+    border-color: $primary-color;
+}
+
+.v-input:focus {
+    outline-width: 0;
+    border-color: $primary-color;
+    border: none;
+    border-color: $primary-color;
+    box-shadow: 0 0 3px 1px $primary-color;
+}
+
+.v-input-wraper-large {
+    @include placeholder {
+        color: $border-color;
+        font-weight: 100;
+        font-size: $large-font-size;
+    }
+}
+
+.v-input-wraper-small,
+.v-input-wraper-default {
+    @include placeholder {
+        color: $border-color;
+        font-weight: 100;
+        font-size: $font-size;
+    }
+}
+
+.v-input[disabled] {
+    background-color: #f3f3f3;
+    opacity: 1;
+    cursor: not-allowed;
+}
+
+//     .v-input[disabled]@include placeholder {
+//     color: red;
+// }
