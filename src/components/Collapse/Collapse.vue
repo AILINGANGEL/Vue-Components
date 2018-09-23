@@ -68,6 +68,9 @@ export default {
     watch: {
         cValue() {
             this.setActivePanel();
+        },
+        value(val) {
+            this.cValue = val;
         }
     }
 }
