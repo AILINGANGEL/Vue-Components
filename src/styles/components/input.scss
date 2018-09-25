@@ -1,16 +1,16 @@
 @import '../custom';
 
-@mixin placeholder {
-     ::-webkit-input-placeholder {
+@mixin placeholder($font-size: $font-size, $state:'') {
+    #{$state}::-webkit-input-placeholder {
         @content
     }
-     :-moz-placeholder {
+    #{$state}:-moz-placeholder {
         @content
     }
-     ::-moz-placeholder {
+    #{$state}::-moz-placeholder {
         @content
     }
-     :-ms-input-placeholder {
+    #{$state}:-ms-input-placeholder {
         @content
     }
 }
@@ -21,7 +21,6 @@
 //  :-ms-input {
 //     @include placeholer($prefix);
 // }
-
 .v-input-wraper {
     display: inline-block;
     font-size: $font-size;
@@ -87,6 +86,12 @@ textarea.v-input {
     background-color: #f3f3f3;
     opacity: 1;
     cursor: not-allowed;
+}
+
+.v-input-wraper {
+    @include placeholder($state: '.v-input[disabled]') {
+        color: #808695;
+    }
 }
 
 //     .v-input[disabled]@include placeholder {

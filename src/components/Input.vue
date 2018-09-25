@@ -1,7 +1,7 @@
 <template>
     <div :class="cls">
         <input v-if="type !== 'textarea'" :type="type" ref="input" :value="value" :placeholder="placeholder" :autocomplete="autocomplete" :disabled="disabled" :readonly="readonly" :autofocus="autofocus" @change="inputChange" @focus="inputFocus" @keyup="inputKeyUp" @keydown="inputKeyDown" @keypress="inputKeyPress" @keyup.enter="inputEnter" class="v-input" />
-        <textarea v-else ref="textarea" :value="value" :rows="rows" :disabled="disabled" :readonly="readonly" :autofocus="autofocus" @keypress="inputKeyPress" @change="inputChange" @focus="inputFocus" @blur="inputBlur" @keyup="inputKeyUp" @keydown="inputKeyDown" @keyup.enter="inputEnter" class="v-input">
+        <textarea v-else ref="textarea" :value="value" :placeholder="placeholder" :rows="rows" :disabled="disabled" :readonly="readonly" :autofocus="autofocus" @keypress="inputKeyPress" @change="inputChange" @focus="inputFocus" @blur="inputBlur" @keyup="inputKeyUp" @keydown="inputKeyDown" @keyup.enter="inputEnter" class="v-input">
         </textarea>
     </div>
 </template>
