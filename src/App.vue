@@ -1,6 +1,9 @@
 <template>
     <div id="app">
-        <Input v-model="value" autocomplete="on" type="textarea" ref="ailing" size="large" :rows="8" @on-enter="test" />
+        <Input v-model="value" autocomplete="on" ref="ailing" :rows="8" @on-enter="test" type="textarea" autosize>
+        <span slot="prepend">test</span>
+        <span slot="append">test</span>
+        </Input>
         <Button @click="click" type="primary">click</Button>
     </div>
 </template>
