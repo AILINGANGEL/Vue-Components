@@ -4,7 +4,8 @@
         <span slot="prepend">test</span>
         <span slot="append">test</span>
         </Input>
-        <Button @click="click" type="primary">click</Button>
+        <!-- <Button @click="click" type="primary">click</Button> -->
+        <Icon type="alert" size="32"></Icon>
     </div>
 </template>
 <script>
@@ -18,6 +19,7 @@ import ButtonGroup from './components/ButtonGroup';
 import Collapse from './components/Collapse/Collapse';
 import Panel from './components/Collapse/Panel';
 import Input from './components/Input';
+import Icon from './components/Icon';
 export default {
     name: 'app',
     components: {
@@ -30,7 +32,8 @@ export default {
         ButtonGroup,
         Panel,
         Collapse,
-        Input
+        Input,
+        Icon
     },
     data() {
         return {

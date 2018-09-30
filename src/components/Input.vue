@@ -63,7 +63,7 @@ export default {
     },
     data() {
         return {
-            height: 0
+            height: 'auto'
         }
     },
     computed: {
@@ -74,17 +74,16 @@ export default {
         },
         textareaRow() {
             if (this.autosize) {
-                return 2;
+                return 3;
             } else {
                 return 2;
             }
         },
         styles() {
             return {
-                height: 'auto',
-                height: this.height > 0 ? this.height + 'px' : 'auto',
-                'overflow-y': 'auto',
-                padding: this.getPadding()
+                height: this.height,
+                overflowY: 'hidden',
+                padding: this.getPadding(),
             }
         }
     },
@@ -104,10 +103,10 @@ export default {
             this.$emit('on-blur');
         },
         inputKeyUp(event) {
-            // this.getHeight();
             this.$emit('on-keyup', event);
         },
         inputKeyDown(event) {
+            setTimeout(this.getHeight, 0);
             this.$emit('on-keydown', event);
         },
         inputKeyPress(event) {
@@ -124,20 +123,17 @@ export default {
             }
         },
         getHeight() {
-            var scrollHeight = this.$refs.textarea.scrollHeight;
-            let borderWidth = parseInt(getComputedStyle(this.$refs.textarea)['border-width']);
-            let paddingTop = parseInt(this.$refs.textarea.style['padding-top']);
-            let paddingBottom = parseInt(this.$refs.textarea.style['padding-bottom']);
-            // this.height = scrollHeight - paddingTop - paddingBottom - borderWidth * 2;
-            this.height = scrollHeight;
+            const scrollHeight = this.$refs.textarea.scrollHeight;
+            // console.log(scrollHeight);
+            this.height = 'auto';
+            this.height = scrollHeight + 'px';
         },
         getPadding() {
             if (this.size === 'large') {
-                // return '4px 7px';
+                return '10px 7px';
             } else {
-                // return '1px 7px';
+                return '10px 7px';
             }
-            return '0';
         }
     }
 }

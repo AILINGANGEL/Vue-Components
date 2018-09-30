@@ -145,3 +145,12 @@ on-keypress|原生的 keypress 事件|event
 事件名|说明|参数
 ----|----|----|
 focus|手动聚焦输入框|无
+
+
+### ICON
+### props
+属性|说明|类型|默认值
+----|----|----|----|
+type | 图标的名称| String|-
+size | 图标的大小，单位是 px | Number | String	-
+color| 图标的颜色	 | String | -

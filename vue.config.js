@@ -1,4 +1,12 @@
 module.exports = {
+    // chainWebpack: config => {
+    //     // GraphQL Loader
+    //     config.module.rule('scss')
+    //         .test(/\.scss$/)
+    //         .use('resolve-url-loader')
+    //         .loader('resolve-url-loader')
+    //         .before('sass-loader')
+    // },
     css: {
         loaderOptions: {
             // 给 sass-loader 传递选项
