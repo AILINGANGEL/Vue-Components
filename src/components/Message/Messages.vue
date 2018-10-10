@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import Message from './Message';
+import Message from './MessageItem';
 let seed = 0;
 let now = Date.now();
 

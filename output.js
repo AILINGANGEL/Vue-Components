@@ -23,6 +23,7 @@
       vue$: 'vue/dist/vue.runtime.esm.js'
     },
     extensions: [
+    '*',
       '.js',
       '.jsx',
       '.vue',

@@ -33,4 +33,6 @@ Messages.newInstance = props => {
     }
 }
 
+console.log(Messages);
+
 export default Messages;

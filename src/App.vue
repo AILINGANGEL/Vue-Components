@@ -42,6 +42,9 @@ export default {
             this.$Message.warn({
                 content: 'ailing',
                 top: 200,
+                onClose() {
+                    alert('close');
+                },
                 render: h => {
                     return h('Button', {
                         props: {

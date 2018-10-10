@@ -11,7 +11,7 @@
     </transition>
 </template>
 <script>
-import Icon from '../Icon.vue';
+import Icon from '../Icon';
 import Render from './render';
 const prefixCls = 'v-message';
 const TYPE_ICON_COLOR = {
@@ -94,7 +94,7 @@ export default {
                 return false;
             })
             this.$parent.messages.splice(index, 1);
-            if (this.closable)
+            if (this.onClose)
                 this.onClose();
         }
     },
