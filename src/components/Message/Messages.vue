@@ -1,5 +1,7 @@
 <template>
-    <Message v-for="message in messages"></Message>
+    <div class="v-messages">
+        <Message v-for="message in messages" :key="message.name" v-bind="message"></Message>
+    </div>
 </template>
 <script>
 import Message from './Message';
@@ -20,9 +22,12 @@ export default {
     },
     methods: {
         add(message) {
-            let name = message.name || getUuid();
-            let message = Object.assign({}, message);
-            this.messages.push(message);
+            message.name = message.name || getUuid();
+            let newMessage = Object.assign({}, message);
+            this.messages.push(newMessage);
+        },
+        clearAll() {
+            this.messages = [];
         }
     }
 }

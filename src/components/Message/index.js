@@ -1,36 +1,35 @@
-import Messages from './Messages';
-import Vue from 'vue';
+import Messages from './message';
+
+let messageInstance = null;
+var getMessageInstance = function() {
+    messageInstance =  messageInstance || Messages.newInstance();
+    return messageInstance;
+}
+
+function showMessage (type, content) {
+    let instance = getMessageInstance();
+    instance.show(type, content);
+}
+
 
 export default {
-    message(type) {
-        const Instance = new Vue({
-            render(h) {
-                return h(Messages, {
-                    props: {
-                        text: 'ailing',
-                        type: type
-                    }
-                })
-            }
-        });
-        let component = Instance.$mount();
-        document.body.append(component.$el)
+    message(type, content) {
+        showMessage(type, content);
     },
-    info() {
-        this.message('info');
+    info(content) {
+        this.message('info', content);
     },
-    warn() {
-        this.message('warn');
+    warn(content) {
+        this.message('warn', content);
     },
-    success() {
-        this.message('success');
+    success(content) {
+        this.message('success', content);
     },
-    destroy(className) {
-        setTimeout(function() {
-            let node = document.getElementsByClassName(className)[0];
-            if (node) {
-                document.body.removeChild(node);
-            }
-        }, 500);
+    destroy() {
+        if(messageInstance) {
+            // 移除dom 并将messageInstance置空
+            messageInstance.destroy();
+            messageInstance = null;
+        }
     }
 }

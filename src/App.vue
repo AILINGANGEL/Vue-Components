@@ -1,18 +1,7 @@
 <template>
     <div id="app">
-        <!-- <Input v-model="value" autocomplete="on" ref="ailing" :rows="8" @on-enter="test" type="textarea" autosize> -->
-        <!-- <span slot="prepend">test</span>
-<span slot="append">test</span>
-</Input> -->
         <Button @click="click" type="primary">click</Button>
         <Button @click="destroy" type="primary">destroy</Button>
-        <!-- <Icon type="alert" size="32" color="red"></Icon> -->
-        <button v-on:click="show = !show">
-            Toggle
-        </button>
-        <transition name="slide-fade">
-            <p v-if="show">hello</p>
-        </transition>
     </div>
 </template>
 <script>
@@ -31,7 +20,7 @@ export default {
     name: 'app',
     components: {
         Divider,
-        Button,
+        // Button,
         Select,
         Row,
         Col,
@@ -50,7 +39,17 @@ export default {
     },
     methods: {
         click() {
-            this.$Message.success();
+            this.$Message.warn({
+                content: 'ailing',
+                top: 200,
+                render: h => {
+                    return h('Button', {
+                        props: {
+                            type: 'primary'
+                        }
+                    }, 'test');
+                }
+            });
         },
         destroy() {
             this.$Message.destroy('v-message');
@@ -58,8 +57,3 @@ export default {
     }
 }
 </script>
-<style lang="scss">
-#app {
-    font-size: $font-size; // background-color: grey;
-}
-</style>
