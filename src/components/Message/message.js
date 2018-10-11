@@ -1,10 +1,13 @@
 import Messages from './Messages';
 import Vue from 'vue';
 
-Messages.newInstance = () => {
+Messages.newInstance = (props) => {
+    props = props || {};
     const Instance = new Vue({
         render(h) {
-            return h(Messages);
+            return h(Messages, {
+                props
+            });
         }
     });
     let component = Instance.$mount();

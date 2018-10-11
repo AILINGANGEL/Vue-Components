@@ -1,12 +1,12 @@
 <template>
     <transition name="slide-fade">
-        <div :class="cls" :style="style">
+        <div :class="cls">
             <div :class="contentCls">
                 <div v-if="type==='loading'" class="loading"></div>
                 <Icon :type="iconType" :color="iconColor" v-else></Icon>
                 <span v-if="!render">{{content}}</span>
                 <Render v-else :render="render"></Render>
-                <Icon v-if="closable" type="close-round" @click="closeMessage" style="cursor: pointer;"></Icon>
+                <Icon v-if="closable" type="close-round" @click="closeMessage" :class="closeClass"></Icon>
             </div>
         </div>
     </transition>
@@ -24,8 +24,7 @@ const TYPE_ICON_COLOR = {
 const TYPE_ICON = {
     info: 'information',
     warn: 'alert',
-    success: 'android-checkmark-circle',
-    // loading: 'load-d'
+    success: 'android-checkmark-circle'
 }
 export default {
     components: {
@@ -45,10 +44,6 @@ export default {
         name: {
             type: String,
             required: true
-        },
-        top: {
-            type: Number,
-            default: 20
         },
         closable: {
             type: Boolean,
@@ -70,10 +65,8 @@ export default {
         iconColor() {
             return TYPE_ICON_COLOR[this.type]
         },
-        style() {
-            return {
-                top: `${this.top}px`
-            }
+        closeClass() {
+            return [`${prefixCls}-close`]
         }
     },
     mounted() {
@@ -89,15 +82,6 @@ export default {
             this.closeTimer = setTimeout(this.closeMessage, this.duration * 1000);
         },
         closeMessage() {
-            // let index = -1;
-            // this.$parent.messages.filter((item, i) => {
-            //     if (item.name === this.name) {
-            //         index = i;
-            //         return true
-            //     }
-            //     return false;
-            // })
-            // this.$parent.messages.splice(index, 1);
             this.$parent.remove(this.name);
             if (this.onClose)
                 this.onClose();

@@ -1,8 +1,14 @@
 import Message from './message';
 
 let messageInstance = null;
+
+let DEFAULT_STYLE = {
+    top: 20
+}
 var getMessageInstance = function() {
-    messageInstance =  messageInstance || Message.newInstance();
+    messageInstance =  messageInstance || Message.newInstance({styles: {
+        top: DEFAULT_STYLE.top + 'px'
+    }});
     return messageInstance;
 }
 
@@ -32,6 +38,11 @@ export default {
     },
     loading(content) {
         return this.message('loading', content);
+    },
+    config(content) {
+        if(content !== null) {
+            DEFAULT_STYLE.top = content.top || DEFAULT_STYLE.top;
+        }
     },
     destroy() {
         if(messageInstance) {

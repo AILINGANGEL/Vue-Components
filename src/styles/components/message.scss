@@ -1,9 +1,13 @@
 @import '../custom';
-.v-message {
+.v-messages {
     position: fixed;
     top: 26px;
     left: 0;
     right: 0;
+}
+
+.v-message {
+    margin: 10px 0px;
 }
 
 .v-message-content {
@@ -11,12 +15,19 @@
     border-radius: $border-radius;
     border: $border;
     box-shadow: $box-shadow;
-    display: inline-block;
+    display: inline-flex;
     min-width: 200px;
     padding: 8px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
     color: $font-color;
+    align-items: center;
+}
+
+.v-message-close {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
 }
 

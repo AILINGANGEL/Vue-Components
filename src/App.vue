@@ -37,18 +37,14 @@ export default {
     },
     methods: {
         click() {
+            this.$Message.config({
+                top: 10
+            })
             let test = this.$Message.loading({
                 content: 'ailing',
                 top: 200,
                 duration: 0,
-                // closable: true,
-                render: h => {
-                    return h('Button', {
-                        props: {
-                            type: 'primary'
-                        }
-                    }, 'test');
-                }
+                closable: true
             });
             // setTimeout(test, 2000);
         },

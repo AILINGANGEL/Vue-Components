@@ -1,5 +1,5 @@
 <template>
-    <div class="v-messages">
+    <div class="v-messages" :style="styles">
         <Message v-for="message in messages" :key="message.name" v-bind="message"></Message>
     </div>
 </template>
@@ -14,6 +14,16 @@ function getUuid() {
 export default {
     components: {
         Message
+    },
+    props: {
+        styles: {
+            type: Object,
+            default: () => {
+                return {
+                    top: '15px'
+                }
+            }
+        }
     },
     data() {
         return {
