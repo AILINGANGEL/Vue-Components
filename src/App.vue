@@ -5,12 +5,11 @@
     </div>
 </template>
 <script>
-import Select from './components/Select.vue';
-import Divider from './components/Divider.vue';
-import Button from './components/Button.vue';
-import Row from './components/Grid/Row.vue';
-import Col from './components/Grid/Col.vue';
-import Card from './components/Card.vue';
+import Select from './components/Select';
+import Divider from './components/Divider';
+import Row from './components/Grid/Row';
+import Col from './components/Grid/Col';
+import Card from './components/Card';
 import ButtonGroup from './components/ButtonGroup';
 import Collapse from './components/Collapse/Collapse';
 import Panel from './components/Collapse/Panel';
@@ -20,7 +19,6 @@ export default {
     name: 'app',
     components: {
         Divider,
-        // Button,
         Select,
         Row,
         Col,
@@ -39,12 +37,11 @@ export default {
     },
     methods: {
         click() {
-            this.$Message.warn({
+            let test = this.$Message.loading({
                 content: 'ailing',
                 top: 200,
-                onClose() {
-                    alert('close');
-                },
+                duration: 0,
+                // closable: true,
                 render: h => {
                     return h('Button', {
                         props: {
@@ -53,6 +50,7 @@ export default {
                     }, 'test');
                 }
             });
+            setTimeout(test, 2000);
         },
         destroy() {
             this.$Message.destroy('v-message');

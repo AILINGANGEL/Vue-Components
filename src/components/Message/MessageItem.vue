@@ -17,12 +17,14 @@ const prefixCls = 'v-message';
 const TYPE_ICON_COLOR = {
     info: 'blue',
     warn: 'orange',
-    success: 'green'
+    success: 'green',
+    loading: 'blue'
 }
 const TYPE_ICON = {
     info: 'information',
     warn: 'alert',
-    success: 'android-checkmark-circle'
+    success: 'android-checkmark-circle',
+    loading: 'load-b'
 }
 export default {
     components: {
@@ -75,7 +77,8 @@ export default {
     },
     mounted() {
         // 如果开启了关闭按钮就不开启定时消失
-        if (!this.closable) {
+        if (!this.closable && this.duration != 0) {
+            console.log(123)
             this.disappear();
         }
     },
@@ -85,15 +88,16 @@ export default {
             this.closeTimer = setTimeout(this.closeMessage, this.duration * 1000);
         },
         closeMessage() {
-            let index = -1;
-            this.$parent.messages.filter((item, i) => {
-                if (item.name === this.name) {
-                    index = i;
-                    return true
-                }
-                return false;
-            })
-            this.$parent.messages.splice(index, 1);
+            // let index = -1;
+            // this.$parent.messages.filter((item, i) => {
+            //     if (item.name === this.name) {
+            //         index = i;
+            //         return true
+            //     }
+            //     return false;
+            // })
+            // this.$parent.messages.splice(index, 1);
+            this.$parent.remove(this.name);
             if (this.onClose)
                 this.onClose();
         }

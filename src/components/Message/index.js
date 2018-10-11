@@ -1,29 +1,37 @@
-import Messages from './message';
+import Message from './message';
 
 let messageInstance = null;
 var getMessageInstance = function() {
-    messageInstance =  messageInstance || Messages.newInstance();
+    messageInstance =  messageInstance || Message.newInstance();
     return messageInstance;
 }
 
+let name = 1;
 function showMessage (type, content) {
     let instance = getMessageInstance();
-    instance.show(type, content);
+    name++;
+    instance.show(type, content, 'v-message' + name);
+    return function() {
+        instance.remove('v-message' + name);
+    }
 }
 
 
 export default {
     message(type, content) {
-        showMessage(type, content);
+        return showMessage(type, content);
     },
     info(content) {
-        this.message('info', content);
+        return this.message('info', content);
     },
     warn(content) {
-        this.message('warn', content);
+        return this.message('warn', content);
     },
     success(content) {
-        this.message('success', content);
+        return this.message('success', content);
+    },
+    loading(content) {
+        return this.message('loading', content);
     },
     destroy() {
         if(messageInstance) {

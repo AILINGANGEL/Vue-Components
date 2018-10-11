@@ -28,6 +28,17 @@ export default {
         },
         clearAll() {
             this.messages = [];
+        },
+        remove(name) {
+            let index = -1;
+            this.messages.filter((item, i) => {
+                if (item.name === name) {
+                    index = i;
+                    return true
+                }
+                return false;
+            })
+            this.messages.splice(index, 1);
         }
     }
 }

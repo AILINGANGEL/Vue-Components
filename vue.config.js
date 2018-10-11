@@ -2,7 +2,7 @@ module.exports = {
     configureWebpack: {
         resolve: {
             extensions: [
-                '*',
+                // '*',
                 '.js',
                 '.jsx',
                 '.vue',
