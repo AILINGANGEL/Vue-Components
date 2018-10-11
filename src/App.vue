@@ -50,7 +50,7 @@ export default {
                     }, 'test');
                 }
             });
-            setTimeout(test, 2000);
+            // setTimeout(test, 2000);
         },
         destroy() {
             this.$Message.destroy('v-message');

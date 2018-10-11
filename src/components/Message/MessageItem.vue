@@ -2,7 +2,8 @@
     <transition name="slide-fade">
         <div :class="cls" :style="style">
             <div :class="contentCls">
-                <Icon :type="iconType" :color="iconColor"></Icon>
+                <div v-if="type==='loading'" class="loading"></div>
+                <Icon :type="iconType" :color="iconColor" v-else></Icon>
                 <span v-if="!render">{{content}}</span>
                 <Render v-else :render="render"></Render>
                 <Icon v-if="closable" type="close-round" @click="closeMessage" style="cursor: pointer;"></Icon>
@@ -24,7 +25,7 @@ const TYPE_ICON = {
     info: 'information',
     warn: 'alert',
     success: 'android-checkmark-circle',
-    loading: 'load-b'
+    // loading: 'load-d'
 }
 export default {
     components: {
