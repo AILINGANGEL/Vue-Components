@@ -1,0 +1,25 @@
+@import '../custom';
+.v-upload-wraper {
+	display: inline-block;
+}
+
+.v-upload-btn {
+
+}
+
+.v-upload-list {
+	// display: inline-block;
+	list-style: none;
+	padding: 0;
+	color: $font-color;
+	font-size: $font-size;
+}
+
+.v-upload-list li {
+	margin: 10px;
+}
+
+.v-upload-list li:hover {
+	background-color: $background-color;
+	cursor: pointer;
+}

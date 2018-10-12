@@ -173,3 +173,13 @@ render | 自定义描述内容，使用 Vue 的 Render 函数|Function|-
 duration | 自动关闭的延时，单位秒 |Number|1.5
 onClose	| 关闭时的回调 | Function |	-
 closable |是否显示关闭按钮|Boolean |	false
+
+
+### Upload
+
+### props
+属性|说明|类型|默认值
+----|----|----|----|
+accept | 接受上传的文件类型	| String|	-
+multiple	 | 是否支持多选文件 |Boolean| false
+show-upload-list | 是否显示已上传文件列表 |Boolean| true
