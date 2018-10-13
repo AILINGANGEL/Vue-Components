@@ -3,8 +3,8 @@
 	display: inline-block;
 }
 
-.v-upload-btn {
-
+.v-upload-btn > input{
+	display: none;
 }
 
 .v-upload-list {
