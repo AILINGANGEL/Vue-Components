@@ -188,3 +188,9 @@ headers|上传的请求头部|Object|-
 with-credentials|跨站请求时是否允许发送cookie等凭证信息|Boolean|false
 
 
+### 开发备注
+问题|解决方案
+----|----|
+1 原生的Input type=file的组件样式很丑 | 自己写一个样式，然后设置原生的<input type="file" /> display:none 将其隐藏，然后点击自己样式的组件之后调用这个原生的组件的click事件
+2.上传文件| 上传文件需要使用post请求,用表单进行提交,新建一个表单对象 let formData = new FormData(),然后将上传需要的Post参数依次append到这个对象中formData.appen('file', file);
+
