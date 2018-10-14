@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Upload multiple show-upload-list action="test" :headers="data" :data="data">
+        <Upload multiple show-upload-list action="test" :headers="data" :data="data" :on-error="handleError">
             <Button>上传</Button>
         </Upload>
     </div>
@@ -16,6 +16,11 @@ export default {
                 a: 1,
                 b: 2
             }
+        }
+    },
+    methods: {
+        handleError(err, res, file) {
+            console.log(file);
         }
     }
 }

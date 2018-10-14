@@ -38,6 +38,12 @@ export default {
         showUploadList: {
             type: Boolean,
             default: true
+        },
+        onError: {
+        	type: Function,
+        	default() {
+        		return {};
+        	}
         }
     },
     data() {
@@ -72,9 +78,15 @@ export default {
         		file: file,
         		data: this.data,
         		headers: this.headers,
-        		withCredentials: this.withCredentials
+        		withCredentials: this.withCredentials,
+        		onError: (err, response) => {
+        			this.handleUploadError(err, response, file);
+        		}
         	}
         	ajax(option);
+        },
+        handleUploadError(error, response, file) {
+        	this.onError(error, response, this.fileList)
         },
         handleClick() {
         	this.$refs.file.click();
