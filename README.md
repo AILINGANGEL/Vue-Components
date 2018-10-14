@@ -186,6 +186,7 @@ show-upload-list | 是否显示已上传文件列表 |Boolean| true
 data|上传时带的其他请求参数|Object|-
 headers|上传的请求头部|Object|-
 with-credentials|跨站请求时是否允许发送cookie等凭证信息|Boolean|false
+on-error|文件上传失败时的钩子，返回字段为 error, file, fileList|Function| -
 
 
 ### 开发备注

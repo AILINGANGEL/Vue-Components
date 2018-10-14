@@ -19,8 +19,8 @@ export default {
         }
     },
     methods: {
-        handleError(err, res, file) {
-            console.log(file);
+        handleError(err, file, fileList) {
+            console.log(file)
         }
     }
 }

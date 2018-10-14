@@ -86,7 +86,7 @@ export default {
         	ajax(option);
         },
         handleUploadError(error, response, file) {
-        	this.onError(error, response, this.fileList)
+        	this.onError(error, file, this.fileList)
         },
         handleClick() {
         	this.$refs.file.click();
