@@ -183,3 +183,8 @@ closable |是否显示关闭按钮|Boolean |	false
 accept | 接受上传的文件类型	| String|	-
 multiple	 | 是否支持多选文件 |Boolean| false
 show-upload-list | 是否显示已上传文件列表 |Boolean| true
+data|上传时带的其他请求参数|Object|-
+headers|上传的请求头部|Object|-
+with-credentials|跨站请求时是否允许发送cookie等凭证信息|Boolean|false
+
+

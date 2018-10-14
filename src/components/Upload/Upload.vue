@@ -10,11 +10,18 @@
 <script>
 const prefixCls = 'v-upload';
 import UploadList from './UploadList';
+import ajax from './ajax';
 export default {
     components: {
         UploadList
     },
     props: {
+    	action: {
+    		type: String,
+    		required: true
+    	},
+    	data: Object,
+    	headers: Object,
         name: {
             type: String,
             default: 'file'
@@ -22,6 +29,10 @@ export default {
         multiple: {
             type: Boolean,
             default: false
+        },
+        withCredentials: {
+        	type: Boolean,
+        	default: false
         },
         accept: String,
         showUploadList: {
@@ -46,6 +57,24 @@ export default {
         uploadChange(evt) {
             let selectedFiles = this.$refs.file.files; // 获取用户选中的文件
             this.fileList = selectedFiles;
+            this.uploadFiles();
+        },
+        uploadFiles() {
+        	let postFiles = [].slice.call(this.fileList);
+        	postFiles.forEach(file=>{
+        		this.upload(file);
+        	})
+        },
+        upload(file) {
+        	const option = {
+        		action: this.action,
+        		fileName: this.name,
+        		file: file,
+        		data: this.data,
+        		headers: this.headers,
+        		withCredentials: this.withCredentials
+        	}
+        	ajax(option);
         },
         handleClick() {
         	this.$refs.file.click();

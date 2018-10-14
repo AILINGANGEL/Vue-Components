@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Upload multiple show-upload-list>
+        <Upload multiple show-upload-list action="test" :headers="data" :data="data">
             <Button>上传</Button>
         </Upload>
     </div>
@@ -11,10 +11,12 @@ export default {
     data() {
         return {
             value: '',
-            show: false
+            show: false,
+            data: {
+                a: 1,
+                b: 2
+            }
         }
-    },
-    methods: {
     }
 }
 </script>
