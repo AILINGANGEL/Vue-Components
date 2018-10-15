@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Upload multiple show-upload-list action="test" :headers="data" :data="data" :on-error="handleError">
+        <Upload multiple show-upload-list action="test" :headers="data" :data="data" :on-error="handleError" :before-upload="test">
             <Button>上传</Button>
         </Upload>
     </div>
@@ -21,6 +21,11 @@ export default {
     methods: {
         handleError(err, file, fileList) {
             console.log(file)
+        },
+        test(file) {
+            return new Promise((resolve, reject)=> {
+                resolve(file);
+            })
         }
     }
 }

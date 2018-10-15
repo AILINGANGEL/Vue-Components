@@ -16,12 +16,12 @@ export default {
         UploadList
     },
     props: {
-    	action: {
-    		type: String,
-    		required: true
-    	},
-    	data: Object,
-    	headers: Object,
+        action: {
+            type: String,
+            required: true
+        },
+        data: Object,
+        headers: Object,
         name: {
             type: String,
             default: 'file'
@@ -31,19 +31,20 @@ export default {
             default: false
         },
         withCredentials: {
-        	type: Boolean,
-        	default: false
+            type: Boolean,
+            default: false
         },
         accept: String,
         showUploadList: {
             type: Boolean,
             default: true
         },
+        beforeUpload: Function,
         onError: {
-        	type: Function,
-        	default() {
-        		return {};
-        	}
+            type: Function,
+            default () {
+                return {};
+            }
         }
     },
     data() {
@@ -60,36 +61,54 @@ export default {
         }
     },
     methods: {
-        uploadChange(evt) {
-            let selectedFiles = this.$refs.file.files; // 获取用户选中的文件
+        handleClick() {
+            this.$refs.file.click();
+        },
+        uploadChange(e) {
+            let selectedFiles = e.target.files; // 获取用户选中的文件
             this.fileList = selectedFiles;
             this.uploadFiles();
+            this.$refs.file.value = null;
         },
         uploadFiles() {
-        	let postFiles = [].slice.call(this.fileList);
-        	postFiles.forEach(file=>{
-        		this.upload(file);
-        	})
+            let postFiles = [].slice.call(this.fileList);
+            postFiles.forEach(file => {
+                this.upload(file);
+            })
         },
         upload(file) {
-        	const option = {
-        		action: this.action,
-        		fileName: this.name,
-        		file: file,
-        		data: this.data,
-        		headers: this.headers,
-        		withCredentials: this.withCredentials,
-        		onError: (err, response) => {
-        			this.handleUploadError(err, response, file);
-        		}
-        	}
-        	ajax(option);
+            if (!this.beforeUpload) {
+                return this.post(file);
+            }
+            const before = this.beforeUpload(file);
+            if (before && before.then) {
+                before.then(processedFile => {
+                    if (Object.prototype.toString.call(processedFile) === '[object File]') {
+                        this.post(file)
+                    } else {
+                        this.post(file);
+                    }
+                })
+            } else if (before !== false) {
+                this.post(file);
+            }
+        },
+        post(file) {
+            const option = {
+                action: this.action,
+                fileName: this.name,
+                file: file,
+                data: this.data,
+                headers: this.headers,
+                withCredentials: this.withCredentials,
+                onError: (err, response) => {
+                    this.handleUploadError(err, response, file);
+                }
+            }
+            ajax(option);
         },
         handleUploadError(error, response, file) {
-        	this.onError(error, file, this.fileList)
-        },
-        handleClick() {
-        	this.$refs.file.click();
+            this.onError(error, file, this.fileList)
         }
     }
 }

@@ -187,6 +187,7 @@ data|上传时带的其他请求参数|Object|-
 headers|上传的请求头部|Object|-
 with-credentials|跨站请求时是否允许发送cookie等凭证信息|Boolean|false
 on-error|文件上传失败时的钩子，返回字段为 error, file, fileList|Function| -
+before-upload|上传文件之前的钩子，参数为上传的文件，若返回 false 或者 Promise 则停止上传	|Function|-
 
 
 ### 开发备注
