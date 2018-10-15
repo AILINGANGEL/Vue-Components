@@ -4,6 +4,7 @@
             <input ref="file" type="file" :name="name" :multiple="multiple" :accept="accept" @change="uploadChange" />
             <slot></slot>
         </div>
+        <slot name="tip"></slot>
         <UploadList :files="fileList" v-if="showUploadList"></UploadList>
     </div>
 </template>
