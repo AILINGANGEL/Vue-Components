@@ -174,9 +174,18 @@ multiple	 | 是否支持多选文件 |Boolean| false
 show-upload-list | 是否显示已上传文件列表 |Boolean| true
 data|上传时带的其他请求参数|Object|-
 headers|上传的请求头部|Object|-
+format|支持的文件类型，与 accept 不同的是，format 是识别文件的后缀名，accept 为 input 标签原生的 accept 属性，会在选择文件时过滤，可以两者结合使用|Array|-
+type|上传控件的类型，可选值为 select（点击选择），drag（支持拖拽）	|String|select
+max-size|文件大小限制，单位 kb	|Number|-
+paste|是否支持粘贴上传文件	|Boolean|false
+preview| 是否支持预览，只有在是图片的情况下生效|Boolean|false
 with-credentials|跨站请求时是否允许发送cookie等凭证信息|Boolean|false
 on-error|文件上传失败时的钩子，返回字段为 error, file, fileList|Function| -
 before-upload|上传文件之前的钩子，参数为上传的文件，若返回 false 或者 Promise 则停止上传	|Function|-
+on-exceeded-size|文件超出指定大小限制时的钩子，返回字段为 file, fileList	|Function|-
+
+
+
 
 ### methods
 方法名|说明|参数
@@ -195,6 +204,8 @@ tip|辅助提示
 ----|----|
 1 原生的Input type=file的组件样式很丑 | 自己写一个样式，然后设置原生的<input type="file" /> display:none 将其隐藏，然后点击自己样式的组件之后调用这个原生的组件的click事件
 2.上传文件| 上传文件需要使用post请求,用表单进行提交,新建一个表单对象 let formData = new FormData(),然后将上传需要的Post参数依次append到这个对象中formData.appen('file', file);
+3.有很多函数都作为prop,并没有作为event handler| 查了vue 论坛，目前没有特别说明两者的区别，怎么使用纯属个人爱好
+4.如何预览图片|获取到文件对象fileObj,然后利用URL.createObjectURL(fileObj)方法返回一个表示这个对象的url,并将这个url赋值给img标签的url属性
 
 
 

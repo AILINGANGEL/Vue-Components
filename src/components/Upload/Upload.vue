@@ -1,17 +1,18 @@
 <template>
     <div :class="cls">
-        <div :class="uploadBtncls" @click="handleClick">
+        <div :class="uploadBtncls" @click="handleClick" @dragover.prevent="isDraging=true" @dragleave.prevent="isDraging=false" @drop.prevent="onDrop" @paste="handlePaste">
             <input ref="file" type="file" :name="name" :multiple="multiple" :accept="accept" @change="uploadChange" />
             <slot></slot>
         </div>
         <slot name="tip"></slot>
-        <UploadList :files="fileList" v-if="showUploadList"></UploadList>
+        <UploadList :files="fileList" v-if="showUploadList" :preview="preview"></UploadList>
     </div>
 </template>
 <script>
 const prefixCls = 'v-upload';
 import UploadList from './UploadList';
 import ajax from './ajax';
+import { oneOf } from '../../utils/assist';
 export default {
     components: {
         UploadList
@@ -27,6 +28,17 @@ export default {
             type: String,
             default: 'file'
         },
+        preview: {
+            type: Boolean,
+            default: false,
+        },
+        type: {
+            type: String,
+            validator(value) {
+                return oneOf(value, ['select', 'drag']);
+            },
+            default: 'select'
+        },
         multiple: {
             type: Boolean,
             default: false
@@ -36,10 +48,15 @@ export default {
             default: false
         },
         accept: String,
+        format: Array,
         maxSize: Number,
         showUploadList: {
             type: Boolean,
             default: true
+        },
+        paste: {
+            type: Boolean,
+            default: false
         },
         beforeUpload: Function,
         onError: {
@@ -50,19 +67,29 @@ export default {
         },
         onExceededSize: {
             type: Function,
-            default() {
+            default () {
+                return {};
+            }
+        },
+        onFormatError: {
+            type: Function,
+            default () {
                 return {};
             }
         }
     },
     data() {
         return {
-            fileList: undefined
+            fileList: undefined,
+            isDraging: false
         }
     },
     computed: {
         uploadBtncls() {
-            return [`${prefixCls}-btn`];
+            return [`${prefixCls}-btn`, {
+                [`${prefixCls}-select`]: this.type === 'select',
+                [`${prefixCls}-drag`]: this.isDraging
+            }];
         },
         cls() {
             return [`${prefixCls}-wraper`];
@@ -73,10 +100,11 @@ export default {
             this.$refs.file.click();
         },
         uploadChange(e) {
+            console.log(1223);
             let selectedFiles = e.target.files; // 获取用户选中的文件
+            console.log(selectedFiles);
             this.fileList = selectedFiles;
             this.uploadFiles();
-            this.$refs.file.value = null;
         },
         uploadFiles() {
             let postFiles = [].slice.call(this.fileList);
@@ -102,9 +130,18 @@ export default {
             }
         },
         post(file) {
-            if(this.maxSize) {
-                if(file.size > this.maxSize * 1024) {
+            if (this.format && this.format.length) {
+                const _file_ext = file.name.split('.').pop().toLowerCase();
+                const checked = this.format.some(item => item.toLowerCase() === _file_ext);
+                if (!checked) {
+                    this.onFormatError(file, this.fileList);
+                    return false;
+                }
+            }
+            if (this.maxSize) {
+                if (file.size > this.maxSize * 1024) {
                     this.onExceededSize(file, this.fileList);
+                    return false;
                 }
             }
             const option = {
@@ -120,10 +157,21 @@ export default {
             }
             ajax(option);
         },
+        onDrop(e) {
+            this.isDraging = false;
+            this.fileList = e.dataTransfer.files;
+            this.uploadFiles();
+        },
+        handlePaste(e) {
+            if (this.paste) {
+                this.fileList = e.clipboardData.files;
+                this.uploadFiles();
+            }
+        },
         handleUploadError(error, response, file) {
             this.onError(error, file, this.fileList)
         },
-        clearFiles(){
+        clearFiles() {
             this.fileList = []
         }
     }

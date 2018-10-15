@@ -7,6 +7,21 @@
 	display: none;
 }
 
+.v-upload-select {
+	border: 1px dashed $border-color;
+	text-align: center;
+	padding: 5px;
+	cursor: pointer;
+}
+
+.v-upload-select:hover {
+	border-color: $primary-color;
+}
+
+.v-upload-drag {
+	border: 2px dashed $primary-color;
+}
+
 .v-upload-list {
 	// display: inline-block;
 	list-style: none;
@@ -22,4 +37,9 @@
 .v-upload-list li:hover {
 	background-color: $background-color;
 	cursor: pointer;
+}
+
+.v-upload-image {
+	widows: 50px;
+	height: 50px;
 }

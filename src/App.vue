@@ -1,7 +1,10 @@
 <template>
     <div id="app">
-        <Upload multiple show-upload-list action="test" :headers="data" :data="data" :on-error="handleError" :before-upload="test">
-            <Button>上传</Button>
+        <Upload multiple show-upload-list action="test" :headers="data" :data="data" :on-error="handleError" :before-upload="test" preview>
+            <div style="padding: 20px 0">
+                <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
+                <p>Click or drag files here to upload</p>
+            </div>
         </Upload>
     </div>
 </template>
@@ -20,10 +23,10 @@ export default {
     },
     methods: {
         handleError(err, file, fileList) {
-            console.log(file)
+            // console.log(file)
         },
         test(file) {
-            return new Promise((resolve, reject)=> {
+            return new Promise((resolve, reject) => {
                 resolve(file);
             })
         }
