@@ -23,28 +23,19 @@ npm run lint
 
 
 ## 组件说明
-### Button
-#### props
+
+## 基础
+
+### ICON
+### props
 属性|说明|类型|默认值
 ----|----|----|----|
-type|可以为'primary', 'success', 'warning', 'error', 'default', 'text', 'dash'中的一个,也可以不设置|String|default
-long|开启后按钮的长度为100%|Boolean|false
-disabled|设置按钮为禁用状态|Boolean|false
-shape|可以设置为circle,让按钮变成原型|-
-size|可以设置为large, small| String| -
-
-#### event
-默认支持click事件
+type | 图标的名称| String|-
+size | 图标的大小，单位是 px | Number | String	-
+color| 图标的颜色	 | String | -
 
 
-### ButtonGroup
-#### props
-属性|说明|类型|默认值
-----|----|----|----|
-size|可以为'large', 'small'|String|-
-vertical|竖着排列按钮|Boolean|false
-shape|设置两头的按钮为原型，只在vertical为false的情况下生效|String| -
-
+## 布局
 
 ### Divider
 #### props
@@ -114,6 +105,30 @@ name|当前面板的name, 与Collapse的value值对应|String |-
 无|面板头内容
 content|描述内容
 
+## 表单
+
+### Button
+#### props
+属性|说明|类型|默认值
+----|----|----|----|
+type|可以为'primary', 'success', 'warning', 'error', 'default', 'text', 'dash'中的一个,也可以不设置|String|default
+long|开启后按钮的长度为100%|Boolean|false
+disabled|设置按钮为禁用状态|Boolean|false
+shape|可以设置为circle,让按钮变成原型|-
+size|可以设置为large, small| String| -
+
+#### event
+默认支持click事件
+
+
+### ButtonGroup
+#### props
+属性|说明|类型|默认值
+----|----|----|----|
+size|可以为'large', 'small'|String|-
+vertical|竖着排列按钮|Boolean|false
+shape|设置两头的按钮为原型，只在vertical为false的情况下生效|String| -
+
 
 ### Input
 #### props
@@ -146,35 +161,6 @@ on-keypress|原生的 keypress 事件|event
 ----|----|----|
 focus|手动聚焦输入框|无
 
-
-### ICON
-### props
-属性|说明|类型|默认值
-----|----|----|----|
-type | 图标的名称| String|-
-size | 图标的大小，单位是 px | Number | String	-
-color| 图标的颜色	 | String | -
-
-
-### Message
-
-通过直接调用以下方法来使用组件：
-
-this.$Message.info(config)
-this.$Message.success(config)
-this.$Message.warn(config)
-以上方法隐式的创建及维护 Vue 组件。参数 config 可以是字符串或对象，当为字符串时，直接显示内容，当为对象时，具体说明如下：
-
-### props
-属性|说明|类型|默认值
-----|----|----|----|
-content | 提示内容	| String|	-
-render | 自定义描述内容，使用 Vue 的 Render 函数|Function|-
-duration | 自动关闭的延时，单位秒 |Number|1.5
-onClose	| 关闭时的回调 | Function |	-
-closable |是否显示关闭按钮|Boolean |	false
-
-
 ### Upload
 
 ### props
@@ -195,4 +181,53 @@ before-upload|上传文件之前的钩子，参数为上传的文件，若返回
 ----|----|
 1 原生的Input type=file的组件样式很丑 | 自己写一个样式，然后设置原生的<input type="file" /> display:none 将其隐藏，然后点击自己样式的组件之后调用这个原生的组件的click事件
 2.上传文件| 上传文件需要使用post请求,用表单进行提交,新建一个表单对象 let formData = new FormData(),然后将上传需要的Post参数依次append到这个对象中formData.appen('file', file);
+
+
+
+## 视图
+
+### Message
+
+通过直接调用以下方法来使用组件：
+
+this.$Message.info(config)
+this.$Message.success(config)
+this.$Message.warn(config)
+以上方法隐式的创建及维护 Vue 组件。参数 config 可以是字符串或对象，当为字符串时，直接显示内容，当为对象时，具体说明如下：
+
+### props
+属性|说明|类型|默认值
+----|----|----|----|
+content | 提示内容	| String|	-
+render | 自定义描述内容，使用 Vue 的 Render 函数|Function|-
+duration | 自动关闭的延时，单位秒 |Number|1.5
+onClose	| 关闭时的回调 | Function |	-
+closable |是否显示关闭按钮|Boolean |	false
+
+### 开发备注
+问题|解决方案
+----|----|
+1 this.$Message.loading()需要一个Loading动画 | 见下方代码
+
+```css
+// loading动画
+@keyframes loading {
+	0 {transform: rotate(0deg);}
+    50% {transform: rotate(180deg);}
+    100% {transform: rotate(360deg);}
+}
+// loading 样式
+.loading {
+	display: inline-block;
+	margin-right: 2px;
+	margin-left: 2px;
+	width: 15px;
+	height: 15px;
+	border-radius: 100%;
+	border: 1px dashed #4b9cdb;
+	animation: loading 1.5s .3s cubic-bezier(.17,.37,.43,.67) infinite;
+}
+```
+
+
 
