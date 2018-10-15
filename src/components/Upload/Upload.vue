@@ -109,6 +109,9 @@ export default {
         },
         handleUploadError(error, response, file) {
             this.onError(error, file, this.fileList)
+        },
+        clearFiles(){
+            this.fileList = []
         }
     }
 }

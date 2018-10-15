@@ -175,6 +175,10 @@ with-credentials|跨站请求时是否允许发送cookie等凭证信息|Boolean|
 on-error|文件上传失败时的钩子，返回字段为 error, file, fileList|Function| -
 before-upload|上传文件之前的钩子，参数为上传的文件，若返回 false 或者 Promise 则停止上传	|Function|-
 
+### methods
+方法名|说明|参数
+----|----|----|
+clearFiles|清空已上传的文件列表|无
 
 ### 开发备注
 问题|解决方案
