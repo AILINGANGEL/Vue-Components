@@ -36,6 +36,7 @@ export default {
             default: false
         },
         accept: String,
+        maxSize: Number,
         showUploadList: {
             type: Boolean,
             default: true
@@ -44,6 +45,12 @@ export default {
         onError: {
             type: Function,
             default () {
+                return {};
+            }
+        },
+        onExceededSize: {
+            type: Function,
+            default() {
                 return {};
             }
         }
@@ -95,6 +102,11 @@ export default {
             }
         },
         post(file) {
+            if(this.maxSize) {
+                if(file.size > this.maxSize * 1024) {
+                    this.onExceededSize(file, this.fileList);
+                }
+            }
             const option = {
                 action: this.action,
                 fileName: this.name,
