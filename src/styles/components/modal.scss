@@ -3,8 +3,34 @@
 .v-modal {
 	border: 1px solid $border-color;
 	position: fixed;
-	z-index: 10;
 	left: 50%;
-	top: 50%;
-	transform: translate(-50%, -50%);
+	transform: translate(-50%);
+	background-color: white;
+	border-radius: $border-radius;
+}
+
+.v-modal-mask {
+	@include mask();
+}
+
+.v-modal-footer {
+	padding: 10px;
+	border-top: 1px solid $border-color;
+	text-align: right;
+}
+
+.v-modal-content {
+	padding: 10px;
+	min-height: 100px;
+	border-top: 1px solid $border-color;
+}
+
+.v-modal-header {
+	position: relative;
+	padding: 10px;
+}
+
+.v-modal-close {
+	position: absolute;
+	right: 10px;
 }

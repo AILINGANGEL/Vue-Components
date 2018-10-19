@@ -14,7 +14,7 @@ Messages.newInstance = (props) => {
     document.body.append(component.$el);
     const MESSAGE_ITEM = Instance.$children[0]; // 获取Messages实例
     return {
-        show(type, content, name) {
+        show(type, content) {
             let messageContent;
             if (typeof content === 'object') {
                 messageContent = content;

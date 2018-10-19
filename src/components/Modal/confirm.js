@@ -1,6 +1,6 @@
 import Modal from './Modal';
 Modal.newInstance = properties => {
-	let props = properties || {};
+    let props = properties || {};
     let instance = new Vue({
         render(h) {
             return h(Modal, {
@@ -12,9 +12,9 @@ Modal.newInstance = properties => {
     document.body.append(component.$el);
     const MODAL_ITEM = Instance.$children[0]; // 获取Modal实例
     return {
-    	show() {
-    		MODAL_ITEM.visible = true;
-    	}
+        show() {
+            MODAL_ITEM.visible = true;
+        }
     }
 
 }

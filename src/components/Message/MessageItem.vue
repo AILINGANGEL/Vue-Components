@@ -72,7 +72,6 @@ export default {
     mounted() {
         // 如果开启了关闭按钮就不开启定时消失
         if (!this.closable && this.duration != 0) {
-            console.log(123)
             this.disappear();
         }
     },

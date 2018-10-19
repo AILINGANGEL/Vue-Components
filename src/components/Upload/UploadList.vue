@@ -33,7 +33,6 @@ export default {
     },
     methods: {
         getImgUrl(file) {
-            console.log(file);
             return window.URL.createObjectURL(file);
         },
         isValidImage(file) {

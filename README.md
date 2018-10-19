@@ -255,4 +255,33 @@ closable |是否显示关闭按钮|Boolean |	false
 ```
 
 
+### Modal
+### props
+属性|说明|类型|默认值
+----|----|----|----|
+value | 对话框是否显示，可使用 v-model 双向绑定数据 | Boolean | false
+title | 对话框标题，如果使用了slot自定义页头,则title无效| String| -
+mask | 是否显示遮罩层，开启 draggable 时，强制不显示| Boolean|true
+ok-text	| 确定按钮的文字|String|确定
+cancel-text | 取消按钮的文字|String|取消
+mask-closable| 是否允许点击遮罩层关闭	| Boolean| true
+width|设置对话框的宽度,单位为px|Number,String| 520
+footer-hide	| 不显示底部| Boolean| false
+styles| 设置浮层样式，调整浮层位置等，该属性设置的是.v-modal的样式	|Object|-
+z-index|层级|Number|1000
 
+
+### Modal events
+事件名|说明|返回值
+----|----|----|
+on-ok|点击确定的回调| -
+on-cancel|点击取消的回调| -
+on-visible-change|显示状态发生变化时触发|true/false
+
+
+### slot
+名称|说明
+----|----|
+header|自定义页头
+footer|自定义页角
+无|对话框的主体内容

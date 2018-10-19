@@ -100,9 +100,7 @@ export default {
             this.$refs.file.click();
         },
         uploadChange(e) {
-            console.log(1223);
             let selectedFiles = e.target.files; // 获取用户选中的文件
-            console.log(selectedFiles);
             this.fileList = selectedFiles;
             this.uploadFiles();
         },
