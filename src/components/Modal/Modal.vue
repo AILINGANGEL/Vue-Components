@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div :class="className">
         <div :class="maskClass" v-show="visible" v-if="showMask" @click="clickMask"></div>
         <div v-if="visible":class="modalCls" :style="style">
             <div :class="modalHeaderCls">
@@ -68,7 +68,12 @@ export default {
         scrollable : {
         	type: Boolean,
         	default: false
-        }
+        },
+        top: {
+        	type: [Number, String],
+        	default: 100
+        },
+        className: String
     },
     data() {
         return {
@@ -86,6 +91,7 @@ export default {
         	let styl = {};
         	styl.width = this.width + 'px';
         	styl.zIndex = this.zIndex;
+        	styl.top = this.top + 'px';
         	if(this.styles);
             return Object.assign(styl, this.styles);
         },

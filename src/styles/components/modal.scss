@@ -2,7 +2,7 @@
 
 .v-modal {
 	border: 1px solid $border-color;
-	position: fixed;
+	position: absolute;
 	left: 50%;
 	transform: translate(-50%);
 	background-color: white;

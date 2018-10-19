@@ -269,6 +269,7 @@ width|设置对话框的宽度,单位为px|Number,String| 520
 footer-hide	| 不显示底部| Boolean| false
 styles| 设置浮层样式，调整浮层位置等，该属性设置的是.v-modal的样式	|Object|-
 z-index|层级|Number|1000
+top|模态框距离浏览器顶部的位置,单位px|Number, String|100
 
 
 ### Modal events
