@@ -9,6 +9,7 @@ import Modal from './components/Modal';
 
 Vue.config.productionTip = false;
 Vue.prototype.$Message = Message;
+Vue.prototype.$Modal = Modal;
 Vue.component('Button', Button);
 Vue.component('Upload', Upload);
 Vue.component('Icon', Icon);

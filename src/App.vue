@@ -1,11 +1,11 @@
 <template>
     <div id="app">
-        <Button @click="show=true">显示</Button>
-        <Modal v-model="show" title="测试" @on-visible-change="visibleChange" ok-text="测试" width="1000" :footer-hide="true" scrollable class-name="test">
+        <Button @click="test">显示</Button>
+      <!--   <Modal v-model="show" title="测试" @on-visible-change="visibleChange" ok-text="测试" width="1000" :footer-hide="true" scrollable class-name="test">
             <p>第一行</p>
             <p>第一行</p>
             <p>第一行</p>
-        </Modal>
+        </Modal> -->
     </div>
 </template>
 <script>
@@ -24,6 +24,19 @@ export default {
     methods: {
         visibleChange(val) {
             console.log(val);
+        },
+        test() {
+            this.$Modal.confirm({
+                title: '测试',
+                okText: '测试',
+                cancelText: 'abc',
+                render: (h) => {
+                    return h('div', 'hahahah');
+                },
+                onOk: () => {
+                    alert('ok');
+                }
+            });
         }
     }
 }

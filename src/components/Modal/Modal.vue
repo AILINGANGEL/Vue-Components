@@ -1,11 +1,11 @@
 <template>
-    <div :class="className">
+    <div :class="className" class="modal">
         <div :class="maskClass" v-show="visible" v-if="showMask" @click="clickMask"></div>
         <div v-if="visible":class="modalCls" :style="style">
-            <div :class="modalHeaderCls">
+            <div :class="modalHeaderCls" v-if="!headerHide">
                 <slot name="header">
                     {{title}}
-                    <Icon type="close" :class="modalCloseCls" />
+                    <Icon type="close" :class="modalCloseCls" @click="close"/>
                 </slot>
             </div>
             <div :class="modalContentCls">
@@ -57,6 +57,10 @@ export default {
         	default: 520
         },
         footerHide: {
+        	type: Boolean,
+        	default: false
+        },
+        headerHide: {
         	type: Boolean,
         	default: false
         },
