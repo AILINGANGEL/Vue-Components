@@ -6,6 +6,7 @@ import Button from './components/Button';
 import Upload from './components/Upload';
 import Icon from './components/Icon';
 import Modal from './components/Modal';
+import Table from './components/Table';
 
 Vue.config.productionTip = false;
 Vue.prototype.$Message = Message;
@@ -14,6 +15,7 @@ Vue.component('Button', Button);
 Vue.component('Upload', Upload);
 Vue.component('Icon', Icon);
 Vue.component('Modal', Modal);
+Vue.component('Table', Table);
 
 new Vue({
     render: h => h(App)

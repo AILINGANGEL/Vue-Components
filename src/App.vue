@@ -1,43 +1,59 @@
 <template>
     <div id="app">
-        <Button @click="test">显示</Button>
-      <!--   <Modal v-model="show" title="测试" @on-visible-change="visibleChange" ok-text="测试" width="1000" :footer-hide="true" scrollable class-name="test">
-            <p>第一行</p>
-            <p>第一行</p>
-            <p>第一行</p>
-        </Modal> -->
+        <Table :columns="columns1" :data="data1"></Table>
     </div>
 </template>
 <script>
-export default {
+    export default {
     name: 'app',
     data() {
         return {
-            value: '',
-            show: false,
-            data: {
-                a: 1,
-                b: 2
-            }
+           columns1: [
+                    {
+                        title: 'Name',
+                        key: 'name',
+                        width: 100
+                    },
+                    {
+                        title: 'Age',
+                        key: 'age',
+                        width: 100
+                    },
+                    {
+                        title: 'Address',
+                        key: 'address',
+                        width: 100
+                    }
+                ],
+            data1: [
+                {
+                    name: 'John Brown',
+                    age: 18,
+                    address: 'New York No. 1 Lake Park',
+                    date: '2016-10-03'
+                },
+                {
+                    name: 'Jim Green',
+                    age: 24,
+                    address: 'London No. 1 Lake Park',
+                    date: '2016-10-01'
+                },
+                {
+                    name: 'Joe Black',
+                    age: 30,
+                    address: 'Sydney No. 1 Lake Park',
+                    date: '2016-10-02'
+                },
+                {
+                    name: 'Jon Snow',
+                    age: 26,
+                    address: 'Ottawa No. 2 Lake Park',
+                    date: '2016-10-04'
+                }
+            ]
         }
     },
     methods: {
-        visibleChange(val) {
-            console.log(val);
-        },
-        test() {
-            this.$Modal.confirm({
-                title: '测试',
-                okText: '测试',
-                cancelText: 'abc',
-                render: (h) => {
-                    return h('div', 'hahahah');
-                },
-                onOk: () => {
-                    alert('ok');
-                }
-            });
-        }
     }
 }
 </script>
